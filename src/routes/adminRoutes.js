@@ -18,7 +18,7 @@ import {
   
 } from "../controllers/adminController.js";
 import { getDashboardStats } from "../controllers/adminDashboardController.js";
-// import { authenticate, authorizeAdmin } from "../middleware/auth.js";
+import { authenticate, authorizeAdmin } from "../middleware/auth.js";
 import { validate } from "../middleware/validator.js";
 import { upload } from "../middleware/upload.js";
 import { deleteProductImage } from "../controllers/adminController.js";
@@ -33,8 +33,8 @@ const router = express.Router();
 /* =======================
    🔐 PROTECT ALL ADMIN ROUTES
 ======================= */
-// router.use(authenticate);
-// router.use(authorizeAdmin);
+router.use(authenticate);
+router.use(authorizeAdmin);
 
 /* =======================
    📊 DASHBOARD
