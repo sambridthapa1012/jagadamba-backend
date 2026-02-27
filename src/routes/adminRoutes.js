@@ -17,7 +17,7 @@ import {
 
   
 } from "../controllers/adminController.js";
-import { getDashboardStats } from "../controllers/adminDashboardController.js";
+import { getDashboardStats } from "../controllers/adminController.js";
 import { authenticate, authorizeAdmin } from "../middleware/auth.js";
 import { validate } from "../middleware/validator.js";
 import { upload } from "../middleware/upload.js";

@@ -264,30 +264,30 @@ export const updateOrderStatus = async (req, res) => {
    📊 DASHBOARD
 ========================== */
 
-// export const getDashboardStats = async (req, res) => {
-//   try {
-//     const totalUsers = await User.countDocuments();
-//     const totalProducts = await Product.countDocuments({ isActive: true });
-//     const totalOrders = await Order.countDocuments();
+export const getDashboardStats = async (req, res) => {
+  try {
+    const totalUsers = await User.countDocuments();
+    const totalProducts = await Product.countDocuments({ isActive: true });
+    const totalOrders = await Order.countDocuments();
 
-//     const revenue = await Order.aggregate([
-//       { $match: { paymentStatus: "completed" } },
-//       { $group: { _id: null, total: { $sum: "$totalPrice" } } },
-//     ]);
+    const revenue = await Order.aggregate([
+      { $match: { paymentStatus: "completed" } },
+      { $group: { _id: null, total: { $sum: "$totalPrice" } } },
+    ]);
 
-//     res.status(200).json({
-//       success: true,
-//       data: {
-//         totalUsers,
-//         totalProducts,
-//         totalOrders,
-//         revenue: revenue[0]?.total || 0,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.status(200).json({
+      success: true,
+      data: {
+        totalUsers,
+        totalProducts,
+        totalOrders,
+        revenue: revenue[0]?.total || 0,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 // adminController.js
 export const deleteOrder = async (req, res) => {
   const order = await Order.findById(req.params.id);
