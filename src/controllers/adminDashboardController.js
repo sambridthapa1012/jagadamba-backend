@@ -2,6 +2,8 @@ import Order from "../models/Order.js";
 
 export const getDashboardStats = async (req, res) => {
   try {
+     const totalUsers = await User.countDocuments();
+        const totalProducts = await Product.countDocuments({ isActive: true });
     const totalOrders = await Order.countDocuments();
     const cancelledOrders = await Order.countDocuments({
       orderStatus: "cancelled",
@@ -30,6 +32,8 @@ export const getDashboardStats = async (req, res) => {
     res.status(200).json({
       success: true,
       data: {
+        totalUsers,
+        totalProducts,  
         totalOrders,
         cancelledOrders,
         cancellationReasons,
