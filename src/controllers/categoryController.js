@@ -24,7 +24,7 @@ export const createCategory = async (req, res) => {
   try {
     console.log(req.body, req.file);
 
-    const { name, nameNepali, icon, subcategories } = req.body;
+    const { name, nameNepali, icon } = req.body;
 
     if (!name) {
       return res.status(400).json({
@@ -43,7 +43,7 @@ export const createCategory = async (req, res) => {
             public_id: req.file.filename,
           }
         : null,
-      subcategories: JSON.parse(req.body.subcategories || "[]")
+      // subcategories: JSON.parse(req.body.subcategories || "[]")
 
     });
 

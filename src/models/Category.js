@@ -15,7 +15,7 @@ const categorySchema = new mongoose.Schema({
   },
 },
 
-  subcategories: [String],
+  // subcategories: [String],
 });
 
 export default mongoose.model("Category", categorySchema);
